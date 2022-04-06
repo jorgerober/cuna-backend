@@ -10,6 +10,7 @@ class Personal extends Model
 {
 
     protected $table = 'personales';
+
     protected $fillable = ['nomApe', 'DNI', 'celular', 'correo', 'genero'];
 
     protected $guarded = ["id"];

@@ -55,6 +55,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('fichaSgUtOct/unidadTerritoriales', 'Api\SgUtOctController@getUnidadTerritoriales')->name('api.fichaSgUtOct.getUnidadTerritoriales');
     Route::get('fichaSgUtOct/comiteGestiones/{id},{tipo}', 'Api\SgUtOctController@getComiteGestiones')->name('api.fichaSgUtOct.getComiteGestiones');
     Route::get('fichaSgUtOct/tipoServicios', 'Api\SgUtOctController@listarTipoServicios')->name('api.fichaSgUtOct.listarTipoServicios');
+    Route::post('ficha/store', 'Api\SgUtOctController@store')->name('api.fichaSgUtOct.store');
+
+
     //********************************************FICHA SG_SAF**************************************************
     Route::get('fichaSgSaf/seccionesPreguntas', 'Api\SgSafController@getSeccionesPreguntas')->name('api.fichaSgSaf.getSeccionesPreguntas');
 

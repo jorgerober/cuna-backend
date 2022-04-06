@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
-class Sg_Ut_Oct extends Model
+class SgUtOct extends Model
 {
-    protected $fillable = ['fechaRegistro', 'ubigeo_id', 'persona_id'];
+    protected $table = 'sg_ut_oct';
+
+    protected $fillable = ['fechaRegistro', 'ubigeo_id', 'personal_id'];
 
     protected $guarded = ["id"];
 
@@ -15,7 +17,7 @@ class Sg_Ut_Oct extends Model
     {
         $search = request('search') ?? null;
 
-        $assignments = $builder->select('id', 'fechaRegistro', 'ubigeo_id', 'persona_id')
+        $assignments = $builder->select('id', 'fechaRegistro', 'ubigeo_id', 'personal_id')
             ->with(['personal', 'ubigeo']);
 
         return $assignments;
@@ -29,6 +31,10 @@ class Sg_Ut_Oct extends Model
     public function ubigeo(){
         return $this->belongsTo(Ubigeo::class);
     }
+
+
+
+
 
 
 }
