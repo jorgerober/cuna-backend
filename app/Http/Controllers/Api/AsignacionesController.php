@@ -318,6 +318,7 @@ class AsignacionesController extends Controller
 
             $user->fill([
                 'password'   => Hash::make(request('password')),
+                'name'       => request('dni'),
             ])->save();
 
             $asignacion->fill([

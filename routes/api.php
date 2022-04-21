@@ -57,6 +57,20 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('fichaSgUtOct/tipoServicios', 'Api\SgUtOctController@listarTipoServicios')->name('api.fichaSgUtOct.listarTipoServicios');
     Route::post('ficha/store', 'Api\SgUtOctController@store')->name('api.fichaSgUtOct.store');
 
+    //********************************************FICHA SEGUIMIENTO SAF TEMPORAL**************************************************
+    Route::get('fichaSeguimientoSaf/seccionesPreguntas', 'Api\SeguimientoSafController@getSeccionesPreguntas')->name('api.fichaSeguimientoSaf.getSeccionesPreguntas');
+    Route::get('fichaSeguimientoSaf/unidadTerritoriales', 'Api\SeguimientoSafController@getUnidadTerritoriales')->name('api.fichaSeguimientoSaf.getUnidadTerritoriales');
+    Route::get('fichaSeguimientoSaf/comiteGestiones/{id},{tipo}', 'Api\SeguimientoSafController@getComiteGestiones')->name('api.fichaSeguimientoSaf.getComiteGestiones');
+    Route::get('fichaSeguimientoSaf/tipoServicios', 'Api\SeguimientoSafController@listarTipoServicios')->name('api.fichaSeguimientoSaf.listarTipoServicios');
+    Route::post('fichaSeguimientoSaf/store', 'Api\SeguimientoSafController@store')->name('api.fichaSeguimientoSaf.store');
+    Route::get('fichaSeguimientoSafs', 'Api\SeguimientoSafController@index')->name('api.fichaSeguimientoSaf.index');
+
+    //********************************************FICHA SEGUIMIENTO SCD TEMPORAL**************************************************
+    Route::get('fichaSeguimientoScd/seccionesPreguntas', 'Api\SeguimientoScdController@getSeccionesPreguntas')->name('api.fichaSeguimientoScd.getSeccionesPreguntas');
+    Route::get('fichaSeguimientoScd/unidadTerritoriales', 'Api\SeguimientoScdController@getUnidadTerritoriales')->name('api.fichaSeguimientoScd.getUnidadTerritoriales');
+    Route::get('fichaSeguimientoScd/comiteGestiones/{id},{tipo}', 'Api\SeguimientoScdController@getComiteGestiones')->name('api.fichaSeguimientoScd.getComiteGestiones');
+    Route::get('fichaSeguimientoScd/tipoServicios', 'Api\SeguimientoScdController@listarTipoServicios')->name('api.fichaSeguimientoScd.listarTipoServicios');
+    Route::post('fichaSeguimientoScd/store', 'Api\SeguimientoScdController@store')->name('api.fichaSeguimientoScd.store');
 
     //********************************************FICHA SG_SAF**************************************************
     Route::get('fichaSgSaf/seccionesPreguntas', 'Api\SgSafController@getSeccionesPreguntas')->name('api.fichaSgSaf.getSeccionesPreguntas');
