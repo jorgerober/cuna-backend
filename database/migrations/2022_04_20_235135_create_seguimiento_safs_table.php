@@ -20,9 +20,9 @@ class CreateSeguimientoSafsTable extends Migration
             $table->string('servicio');
             $table->string('numeroUsuario');
             $table->string('numeroFacilitadora');
-            $table->text('aspecto');
-            $table->text('accion');
-            $table->text('accionImplementa');
+            $table->text('aspecto')->nullable();
+            $table->text('accion')->nullable();
+            $table->text('accionImplementa')->nullable();
             $table->foreignId('ubigeo_id')->constrained('ubigeos');
             $table->foreignId('personal_id')->constrained('personales');
 
