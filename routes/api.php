@@ -71,7 +71,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('fichaSeguimientoScd/comiteGestiones/{id},{tipo}', 'Api\SeguimientoScdController@getComiteGestiones')->name('api.fichaSeguimientoScd.getComiteGestiones');
     Route::get('fichaSeguimientoScd/tipoServicios', 'Api\SeguimientoScdController@listarTipoServicios')->name('api.fichaSeguimientoScd.listarTipoServicios');
     Route::post('fichaSeguimientoScd/store', 'Api\SeguimientoScdController@store')->name('api.fichaSeguimientoScd.store');
-
+    Route::get('fichaSeguimientoScds', 'Api\SeguimientoScdController@index')->name('api.fichaSeguimientoScd.index');
     //********************************************FICHA SG_SAF**************************************************
     Route::get('fichaSgSaf/seccionesPreguntas', 'Api\SgSafController@getSeccionesPreguntas')->name('api.fichaSgSaf.getSeccionesPreguntas');
 

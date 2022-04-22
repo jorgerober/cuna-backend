@@ -27,8 +27,8 @@ class SeguimientoSafController extends Controller
                 [
                     "success"               => true,
                     "data"                  => $fichaSeguimientoSaf->paginate($itemsPerPage != 'undefined' ? $itemsPerPage : 10),
-                    'unidadTerritoriales'   => UnidadTerritorial::select('id', 'descripcion')->get(),
-                    'ubigeos'                => Ubigeo::select('id', 'comiteGestion')->get(),
+                    'unidadTerritorials'    => UnidadTerritorial::select('id', 'descripcion')->get(),
+                    'ubigeos'               => Ubigeo::select('id', 'comiteGestion')->get(),
                     'personales'            => Personal::select('id', 'DNI','nomApe','celular')->get()
                 ]
             );
@@ -94,6 +94,7 @@ class SeguimientoSafController extends Controller
 
             $ficha = SeguimientoSaf::create([
                 'fechaRegistro'     => Carbon::now(),
+                'fechaReactivacion' => request('fechaReactivacion'),
                 'servicio'          => request('servicio'),
                 'numeroUsuario'     => request('numeroUsuario'),
                 'numeroFacilitadora'=> request('numeroFacilitadora'),

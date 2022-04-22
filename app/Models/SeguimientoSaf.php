@@ -10,7 +10,7 @@ class SeguimientoSaf extends Model
     protected $table = 'seguimiento_safs';
 
 
-    protected $fillable = ['fechaRegistro','servicio','numeroUsuario','numeroFacilitadora','aspecto','accion','accionImplementa' , 'ubigeo_id', 'personal_id'];
+    protected $fillable = ['fechaRegistro','fechaReactivacion' ,'servicio','numeroUsuario','numeroFacilitadora','aspecto','accion','accionImplementa' , 'ubigeo_id', 'personal_id'];
 
     protected $guarded = ["id"];
 
@@ -18,8 +18,8 @@ class SeguimientoSaf extends Model
     {
         $search = request('search') ?? null;
 
-        $assignments = $builder->select('id', 'fechaRegistro','servicio','numeroUsuario','numeroFacilitadora','aspecto','accion','accionImplementa', 'ubigeo_id', 'personal_id')
-            ->with(['personal', 'ubigeo']);
+        $assignments = $builder->select('id', 'fechaRegistro','fechaReactivacion','servicio','numeroUsuario','numeroFacilitadora','aspecto','accion','accionImplementa', 'ubigeo_id', 'personal_id')
+            ->orderByDesc('id')->with(['personal', 'ubigeo']);
 
         return $assignments;
     }

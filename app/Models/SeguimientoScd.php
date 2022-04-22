@@ -9,7 +9,10 @@ class SeguimientoScd extends Model
 {
     protected $table = 'seguimiento_scds';
 
-    protected $fillable = ['fechaRegistro','servicio','numeroUsuario','numeroMadre','local','aspecto','accion','accionImplementa' , 'ubigeo_id', 'personal_id'];
+
+
+
+    protected $fillable = ['fechaRegistro','fechaReactivacion','servicio','numeroUsuario','numeroMadre','local','aspecto','accion','accionImplementa','refrigerioManana', 'motivo1','refrigerioAlmuerzo','motivo2','refrigerioTarde','motivo3' , 'ubigeo_id', 'personal_id'];
 
     protected $guarded = ["id"];
 
@@ -17,8 +20,8 @@ class SeguimientoScd extends Model
     {
         $search = request('search') ?? null;
 
-        $assignments = $builder->select('id', 'fechaRegistro','servicio','numeroUsuario','numeroMadre','local','aspecto','accion','accionImplementa', 'ubigeo_id', 'personal_id')
-            ->with(['personal', 'ubigeo']);
+        $assignments = $builder->select('id', 'fechaRegistro','fechaReactivacion','servicio','numeroUsuario','numeroMadre','local','aspecto','accion','accionImplementa','refrigerioManana', 'motivo1','refrigerioAlmuerzo','motivo2','refrigerioTarde','motivo3', 'ubigeo_id', 'personal_id')
+            ->orderByDesc('id')->with(['personal', 'ubigeo']);
 
         return $assignments;
     }

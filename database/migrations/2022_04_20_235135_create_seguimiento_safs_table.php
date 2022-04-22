@@ -16,12 +16,13 @@ class CreateSeguimientoSafsTable extends Migration
         Schema::create('seguimiento_safs', function (Blueprint $table) {
             $table->id();
             $table->dateTime('fechaRegistro');
+            $table->date('fechaReactivacion');
             $table->string('servicio');
             $table->string('numeroUsuario');
             $table->string('numeroFacilitadora');
-            $table->string('aspecto');
-            $table->string('accion');
-            $table->string('accionImplementa');
+            $table->text('aspecto');
+            $table->text('accion');
+            $table->text('accionImplementa');
             $table->foreignId('ubigeo_id')->constrained('ubigeos');
             $table->foreignId('personal_id')->constrained('personales');
 

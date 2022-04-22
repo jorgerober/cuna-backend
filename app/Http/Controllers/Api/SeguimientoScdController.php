@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Personal;
 use App\Models\Seccion;
 use App\Models\SeguimientoScd;
 use App\Models\SeguimientoScdDetalle;
@@ -17,7 +18,23 @@ use Illuminate\Support\Facades\DB;
 
 class SeguimientoScdController extends Controller
 {
-
+    public function index(): JsonResponse
+    {
+        if (request()->wantsJson()) {
+            $itemsPerPage = (int) request('itemsPerPage');
+            $fichaSeguimientoSaf = SeguimientoScd::filtered();
+            return response()->json(
+                [
+                    "success"               => true,
+                    "data"                  => $fichaSeguimientoSaf->paginate($itemsPerPage != 'undefined' ? $itemsPerPage : 10),
+                    'unidadTerritorials'    => UnidadTerritorial::select('id', 'descripcion')->get(),
+                    'ubigeos'               => Ubigeo::select('id', 'comiteGestion')->get(),
+                    'personales'            => Personal::select('id', 'DNI','nomApe','celular')->get()
+                ]
+            );
+        }
+        abort(401);
+    }
     public function getUnidadTerritoriales(): JsonResponse
     {
 
@@ -75,6 +92,7 @@ class SeguimientoScdController extends Controller
 
             $ficha = SeguimientoScd::create([
                 'fechaRegistro'     => Carbon::now(),
+                'fechaReactivacion' => request('fechaReactivacion'),
                 'servicio'          => request('servicio'),
                 'numeroUsuario'     => request('numeroUsuario'),
                 'numeroMadre'       => request('numeroMadre'),
@@ -82,6 +100,12 @@ class SeguimientoScdController extends Controller
                 'aspecto'           => request('aspecto'),
                 'accion'            => request('accion'),
                 'accionImplementa'  => request('accionImplementa'),
+                'refrigerioManana'  => request('refrigerioManana'),
+                'motivo1'           => request('motivo1'),
+                'refrigerioAlmuerzo'=> request('refrigerioAlmuerzo'),
+                'motivo2'           => request('motivo2'),
+                'refrigerioTarde'   => request('refrigerioTarde'),
+                'motivo3'           => request('motivo3'),
                 'ubigeo_id'         => request('idUbigeo'),
                 'personal_id'       => request('idPersona')
             ]);
