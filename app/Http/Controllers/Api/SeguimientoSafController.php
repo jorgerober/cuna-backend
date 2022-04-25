@@ -51,7 +51,8 @@ class SeguimientoSafController extends Controller
     public function getComiteGestiones(int $unidadTerritorial, string $tipo): JsonResponse
     {
 
-        $comiteGestiones = Ubigeo::select('id','comiteGestion')
+        $comiteGestiones = Ubigeo::select('id',
+            DB::raw("CONCAT(codigoCg, ' - ', comiteGestion) as comiteGestion"))
             ->where('unidad_territorial_id',$unidadTerritorial)
             ->where('tipo_servicio_id',$tipo)
             ->get();

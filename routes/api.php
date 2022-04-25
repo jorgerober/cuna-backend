@@ -141,6 +141,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('reverse', 'Api\TicketInvoiceController@reverse')->name('api.ticket.reverse');
 
     //************************************ REPORTES ***************************************************************************************
+    Route::get('report/fichaSeguimientoSaf/{id}', 'Api\ReportController@getReportFichaSeguimientoSaf')->name('api.fichaSeguimientoSaf.getReportFichaSeguimientoSaf');
+    Route::get('report/listaSeguimientoSaf/{id}', 'Api\ReportController@getReportListaSeguimientoSaf')->name('api.listaSeguimientoSaf.getReportListaSeguimientoSaf');
+    Route::get('report/fichaSeguimientoScd/{id}', 'Api\ReportController@getReportFichaSeguimientoScd')->name('api.fichaSeguimientoScd.getReportFichaSeguimientoScd');
+    Route::get('report/listaSeguimientoScd/{id}', 'Api\ReportController@getReportListaSeguimientoScd')->name('api.listaSeguimientoScd.getReportListaSeguimientoScd');
+
+
     Route::get('report/box/{id}', 'Api\ReportController@getReportBox')->name('api.box.getReportBox');
     Route::get('report/facturaCompra/{id}', 'Api\ReportController@getReportFacturaCompra')->name('api.facturaCompra.getReportFacturaCompra');
     Route::get('report/productStock/{id}', 'Api\ReportController@getReportProductStock')->name('api.productStock.getReportProductStock');
