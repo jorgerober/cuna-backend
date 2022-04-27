@@ -108,6 +108,7 @@ class ReportController
             ->join('secciones', 'secciones.id', '=', 'preguntas.seccion_id')
             ->join('respuestas', 'respuestas.id', '=', 'seguimiento_saf_detalles.respuesta_id')
             ->where('seguimiento_saf_detalles.seguimiento_saf_id', $id)
+            ->orderBy('preguntas.numero', 'ASC')
             ->get();
 
         return response()->json(
@@ -152,6 +153,7 @@ class ReportController
             ->join('secciones', 'secciones.id', '=', 'preguntas.seccion_id')
             ->join('respuestas', 'respuestas.id', '=', 'seguimiento_scd_detalles.respuesta_id')
             ->where('seguimiento_scd_detalles.seguimiento_scd_id', $id)
+            ->orderBy('preguntas.numero', 'ASC')
             ->get();
 
         return response()->json(
